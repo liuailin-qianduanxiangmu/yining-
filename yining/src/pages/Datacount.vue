@@ -33,7 +33,7 @@
     <div class="warn">
       <div class="ratio">
         <span class="count" id="alarmRate" style="    color: #fff;
-    font-weight: normal;font-size: 1.75rem;">33%</span>
+    font-weight: normal;font-size: 1.75rem;">0%</span>
         <p style="margin-top:6px;">今日报警比例</p>
       </div>
     </div>
