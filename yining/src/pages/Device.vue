@@ -1,160 +1,46 @@
 <template>
   <div class="row">
-    <div
-      class="col-md-12"
-      style="padding-right: 5%; padding-left: 5%; width: 100%; margin-top: 30px"
-    >
+    <div class="col-md-12" style="padding-right: 5%; padding-left: 5%; width: 100%; margin-top: 30px">
       <div class="card">
+        <!-- 蓝色表头 -->
         <div class="card-header" style="background-color: #99ccff">
           <strong class="card-title">设备列表</strong>
           <a id="add1" name="add1" href="javascript:void(0);">
-            <button
-              type="button"
-              class="float-right btn btn-outline-primary btn-sm"
-              @click="gotoAddDevice"
-              style="color: #fff"
-            >
+            <button type="button" class="float-right btn btn-outline-primary btn-sm" @click="gotoAddDevice" style="color: #fff">
               <plus-outlined />
               &nbsp; 添加设备
             </button>
           </a>
           &nbsp;&nbsp;&nbsp;
         </div>
-
+        <!-- 中间部分 -->
         <div>
           <!--/form-->
           <div style="display: inline-block; padding: 20px 30px 30px 40px">
             <label for="name">设备名称: &nbsp;</label>
-            <!-- <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="请输入设备名称"
-              style="
-                width: 170px;
-                font-size: 13px;
-                padding-left: 15px;
-                border-radius: 8px;
-                border: 1px solid #bdbdbd;
-              "
-            /> -->
-            <a-input
-              v-model:value="value"
-              placeholder="请输入设备名称"
-              style="border-radius: 10px; width: 220px; height: 28px"
-            />
+
+            <a-input v-model:value="value" placeholder="请输入设备名称" style="border-radius: 10px; width: 220px; height: 28px" />
           </div>
           <div style="display: inline-block; padding-right: 30px">
             <label for="use_department">使用单位: &nbsp;</label>
-            <!-- <input
-              type="text"
-              name="use_department"
-              id="use_department"
-              placeholder="请输入使用单位"
-              style="
-                width: 170px;
-                font-size: 13px;
-                padding-left: 15px;
-                border-radius: 8px;
-                border: 1px solid #bdbdbd;
-              "
-            /> -->
-            <a-input
-              v-model:value="value"
-              placeholder="请输入使用单位"
-              style="border-radius: 10px; width: 220px; height: 28px"
-            />
+
+            <a-input v-model:value="value" placeholder="请输入使用单位" style="border-radius: 10px; width: 220px; height: 28px" />
           </div>
 
           <div style="display: inline-block; padding-right: 15px">
-             <a-select v-model:value="value3"  style="width:150px;height:30px;border-radius:10px">
-                <a-select-option value="mingxiang">明向校区</a-select-option>
-                <a-select-option value="yingxi">迎西校区</a-select-option>
-                <a-select-option value="huyu">虎峪校区</a-select-option>
-              </a-select>
-            <!-- <select
-              style="
-                padding-right: 10px;
-                margin-right: 15px;
-                border-radius: 8px;
-              "
-              id="did"
-              name="did"
-            >
-              <option
-                selected="selected"
-                disabled="disabled"
-                style="display: none"
-                value="0"
-                placeholder="选择区域"
-              ></option>
-              <option value="请选择地区">请选择地区</option>
-              <option value="明向校区">明向校区</option>
-              <option value="迎西校区">迎西校区</option>
-              <option value="虎峪校区">虎峪校区</option>
-            </select> -->
+            <a-select v-model:value="value3" style="width: 150px; height: 30px; border-radius: 10px">
+              <a-select-option value="mingxiang">明向校区</a-select-option>
+              <a-select-option value="yingxi">迎西校区</a-select-option>
+              <a-select-option value="huyu">虎峪校区</a-select-option>
+            </a-select>
           </div>
 
-          <!-- <button
-            style="
-              border: 0px;
-              background-color: #1e90ff;
-              color: white;
-              border-radius: 8px;
-            "
-            id="search"
-            onclick="selectByDis()"
-          >
-            确定
-          </button> -->
-          <a-button
-            type="primary"
-            shape="round"
-            :size="size"
-            style="
-              color: #fff;
-              height: 30px;
-              padding: 8px;
-              padding-top: 0;
-              padding-bottom: 0;
-            "
-            >确定</a-button
-          >
-          <a-button
-            type="primary"
-            shape="round"
-            :size="size"
-            style="
-              color: #878787;
-              height: 30px;
-              padding: 8px;
-              padding-top: 1px;
-              padding-bottom: 1px;
-              background-color: #f0f0f0;
-              border: none;
-              margin-left: 10px;
-            "
-            >重置</a-button
-          >
-          <!-- <button
-            style="
-              border: 0px;
-              display: inline-block;
-              margin-left: 5px;
-              border-radius: 8px;
-            "
-            id="reset"
-          >
-            重置
-          </button> -->
+          <a-button type="primary" shape="round" :size="size" style="color: #fff; height: 30px; padding: 8px; padding-top: 0; padding-bottom: 0">确定</a-button>
+          <a-button type="primary" shape="round" :size="size" style="color: #878787; height: 30px; padding: 8px; padding-top: 1px; padding-bottom: 1px; background-color: #f0f0f0; border: none; margin-left: 10px">重置</a-button>
         </div>
-
+        <!-- 主体表格部分 -->
         <div class="card-body">
-          <table
-            id="manage"
-            class="table table-striped"
-            style="font-size: 14px"
-          >
+          <table id="manage" class="table table-striped" style="font-size: 14px">
             <tbody>
               <tr>
                 <th>序号</th>
@@ -178,81 +64,21 @@
                 <td>{{ item.contact }}</td>
                 <td>{{ item.contactTel }}</td>
                 <td>
-                  <a
-                    class="btn btn-default btn-sm"
-                    id="cid0"
-                    href="javascript:void(0);"
-                    @click="toCheck"
-                    ><ToolFilled />检测</a
-                  >
-                  <a
-                    class="btn btn-default btn-sm"
-                    id="mid0"
-                    href="editEquipment.html?eq_id=1"
-                    ><EditOutlined />修改</a
-                  >
-                  <a
-                    class="btn btn-default btn-sm"
-                    id="del0"
-                    @click="delDevice(item, index)"
-                    ><CloseOutlined />删除</a
-                  >
-                  <a
-                    class="btn btn-default btn-sm"
-                    id="picture"
-                    onclick="newqr(1)"
-                    ><SearchOutlined />二维码</a
-                  >
+                  <a class="btn btn-default btn-sm" id="cid0" href="javascript:void(0);" @click="toCheck"><ToolFilled />检测</a>
+                  <a class="btn btn-default btn-sm" id="mid0" href="editEquipment.html?eq_id=1"><EditOutlined />修改</a>
+                  <a class="btn btn-default btn-sm" id="del0" @click="delDevice(item, index)"><CloseOutlined />删除</a>
+                  <a class="btn btn-default btn-sm" id="picture" onclick="newqr(1)"><SearchOutlined />二维码</a>
                 </td>
               </tr>
-              <!-- <tr>
-                            <td>2</td>
-                            <td>2022-06-19 21:03:11</td>
-                            <td>98</td>
-                            <td>天马行空3</td>
-                            <td>综改示范区</td>
-                            <td>李翔天</td>
-                            <td>18150098816</td>
-                            <td><a class="btn btn-default btn-sm" id="cid1" href="addeqlog.html?eq_id=98"><ToolFilled />检测</a>
-                                <a class="btn btn-default btn-sm" id="mid1" href="editEquipment.html?eq_id=98"><EditOutlined />修改</a>
-                                <a class="btn btn-default btn-sm" id="del1" onclick="deleteequ(98)"><CloseOutlined />删除</a>
-                                <a class="btn btn-default btn-sm" id="picture" onclick="newqr(98)"><SearchOutlined />二维码</a></td>
-                        </tr> -->
             </tbody>
           </table>
           <div class="bottom_big" style="display: block">
             <span class="bottom_1"
               >共 <a id="totalCount">{{ totalPage }}</a> 条</span
             >
-            <!-- <select id="pageSize" class="bottom_2" style="padding-right: 10px;margin-right: 30px;border-radius: 8px;">
-                                    
-                                    <option value="5">5条/页</option>
-                                    <option value="10">10条/页</option>
-                                    <option value="15">15条/页</option>
-                                    <option value="20">20条/页</option>
-                                </select>
-                                <div id="pageNum" class="bottom_3"><a href="javascript:void(0);" onclick="javascript:load(1,5)">
-                        &lt;                    </a><a style="color: #1e90ff" href="javascript:void(0);" onclick="javascript:load(1,5)">1</a><a href="javascript:void(0);" onclick="javascript:load(2,5)">2</a><a href="javascript:void(0);" onclick="javascript:load(3,5)">3</a><a href="javascript:void(0);" onclick="javascript:load(2,5)">
-                       &gt;                     </a></div> -->
-            <!-- <a-pagination v-model:current="current" :total="totalPage" @change="onChange" /> -->
-            <a-pagination
-              v-model:current="current"
-              show-quick-jumper
-              :total="30"
-              @change="onChange"
-            />
+
+            <a-pagination v-model:current="current" show-quick-jumper :total="30" @change="onChange" />
             <br />
-            <!-- <a-pagination
-              v-model:current="current2"
-              show-quick-jumper
-              :total="500"
-              disabled
-              show-less-items
-              @change="onChange"
-            /> -->
-            <!-- <div class="bottom_4">
-                                    前往 <input id="toPage" type="text" style="font-size: 13px;padding-left: 7px;border-radius: 8px;border: 1px solid #BDBDBD;"> 页
-                                </div> -->
           </div>
         </div>
       </div>
@@ -261,104 +87,98 @@
 </template>
 
 <script lang="ts">
-import {
-  PlusOutlined,
-  SearchOutlined,
-  CloseOutlined,
-  ToolFilled,
-  EditOutlined,
-} from "@ant-design/icons-vue";
-import axios from "axios";
-import { defineComponent, ref } from "vue";
-import type { SizeType } from "ant-design-vue/es/config-provider";
+import { PlusOutlined, SearchOutlined, CloseOutlined, ToolFilled, EditOutlined } from '@ant-design/icons-vue';
+import axios from 'axios';
+import { defineComponent, ref } from 'vue';
+import type { SizeType } from 'ant-design-vue/es/config-provider';
 export default defineComponent({
-  name: "Device",
+  name: 'Device',
   components: {
     PlusOutlined,
     SearchOutlined,
     CloseOutlined,
     ToolFilled,
-    EditOutlined,
+    EditOutlined
   },
   data() {
     return {
-      deviceShow: "",
+      deviceShow: '',
       current: ref(1),
-      totalPage: "",
-      size: ref<SizeType>("small"),
+      totalPage: '',
+      size: ref<SizeType>('small')
     };
   },
   methods: {
     onChange() {
       axios
-        .get("http://183.201.200.28:9002/equipmanages/pageQuery", {
+        .get('http://183.201.200.28:9002/equipmanages/pageQuery', {
           params: {
             currentPage: this.current,
-            pageSize: 6,
+            pageSize: 6
           },
           headers: {
             token:
-              "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzeXN0ZW0iLCJzaGlyb1VzZXJJbmZvIjoie1wiY29udGFjdFwiOlwi5byg5LiJXCIsXCJjb250YWN0VGVsXCI6XCIxMzU4NjQ1NzUxMlwiLFwiZGF0ZVwiOjE2NTMyOTYxNjEwMDAsXCJkZXBhcnRJZFwiOjEsXCJkZXNjcmlwdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2m55qE6K6-5aSH566h55CG5ZGYXCIsXCJsb2NhdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2mXCIsXCJwYXNzd29yZFwiOlwidHl1dFwiLFwicm9sZUlkXCI6MixcInRocmVzaG9sZFwiOjUsXCJ1aWRcIjpcIjFcIixcInVzZXJuYW1lXCI6XCJ0eXV0XCJ9IiwiaWF0IjoxNjU5MjY3OTA4LCJqdGkiOiJlMzQ5YTZlNi1mZTE0LTQ1M2YtYjI5OS0xMGY2ZWMyNGQyMWUifQ.kewpWpMZXKuUd0658aaUsoA-6hvRl30aGCwfJGXZfPM",
-          },
+              'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzeXN0ZW0iLCJzaGlyb1VzZXJJbmZvIjoie1wiY29udGFjdFwiOlwi5byg5LiJXCIsXCJjb250YWN0VGVsXCI6XCIxMzU4NjQ1NzUxMlwiLFwiZGF0ZVwiOjE2NTMyOTYxNjEwMDAsXCJkZXBhcnRJZFwiOjEsXCJkZXNjcmlwdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2m55qE6K6-5aSH566h55CG5ZGYXCIsXCJsb2NhdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2mXCIsXCJwYXNzd29yZFwiOlwidHl1dFwiLFwicm9sZUlkXCI6MixcInRocmVzaG9sZFwiOjUsXCJ1aWRcIjpcIjFcIixcInVzZXJuYW1lXCI6XCJ0eXV0XCJ9IiwiaWF0IjoxNjU5MjY3OTA4LCJqdGkiOiJlMzQ5YTZlNi1mZTE0LTQ1M2YtYjI5OS0xMGY2ZWMyNGQyMWUifQ.kewpWpMZXKuUd0658aaUsoA-6hvRl30aGCwfJGXZfPM'
+          }
         })
         .then(
-          (response) => {
+          response => {
             if (response.status == 200) {
               console.log(response);
               this.deviceShow = response.data.data.records;
               console.log(this.deviceShow);
             }
           },
-          (error) => {}
+          error => {}
         );
     },
     delDevice(item: any, index: number) {
       axios
-        .get("http://183.201.200.28:9002/equipmanages/delete", {
+        .get('http://183.201.200.28:9002/equipmanages/delete', {
           params: {
-            equipId: item.equipId,
+            equipId: item.equipId
           },
           headers: {
             token:
-              "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzeXN0ZW0iLCJzaGlyb1VzZXJJbmZvIjoie1wiY29udGFjdFwiOlwi5byg5LiJXCIsXCJjb250YWN0VGVsXCI6XCIxMzU4NjQ1NzUxMlwiLFwiZGF0ZVwiOjE2NTMyOTYxNjEwMDAsXCJkZXBhcnRJZFwiOjEsXCJkZXNjcmlwdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2m55qE6K6-5aSH566h55CG5ZGYXCIsXCJsb2NhdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2mXCIsXCJwYXNzd29yZFwiOlwidHl1dFwiLFwicm9sZUlkXCI6MixcInRocmVzaG9sZFwiOjUsXCJ1aWRcIjpcIjFcIixcInVzZXJuYW1lXCI6XCJ0eXV0XCJ9IiwiaWF0IjoxNjU5MjY3OTA4LCJqdGkiOiJlMzQ5YTZlNi1mZTE0LTQ1M2YtYjI5OS0xMGY2ZWMyNGQyMWUifQ.kewpWpMZXKuUd0658aaUsoA-6hvRl30aGCwfJGXZfPM",
-          },
+              'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzeXN0ZW0iLCJzaGlyb1VzZXJJbmZvIjoie1wiY29udGFjdFwiOlwi5byg5LiJXCIsXCJjb250YWN0VGVsXCI6XCIxMzU4NjQ1NzUxMlwiLFwiZGF0ZVwiOjE2NTMyOTYxNjEwMDAsXCJkZXBhcnRJZFwiOjEsXCJkZXNjcmlwdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2m55qE6K6-5aSH566h55CG5ZGYXCIsXCJsb2NhdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2mXCIsXCJwYXNzd29yZFwiOlwidHl1dFwiLFwicm9sZUlkXCI6MixcInRocmVzaG9sZFwiOjUsXCJ1aWRcIjpcIjFcIixcInVzZXJuYW1lXCI6XCJ0eXV0XCJ9IiwiaWF0IjoxNjU5MjY3OTA4LCJqdGkiOiJlMzQ5YTZlNi1mZTE0LTQ1M2YtYjI5OS0xMGY2ZWMyNGQyMWUifQ.kewpWpMZXKuUd0658aaUsoA-6hvRl30aGCwfJGXZfPM'
+          }
         })
         .then(
-          (response) => {
+          response => {
             if (response.status == 200) {
               console.log(response);
               this.deviceShow.slice(index, 1);
               console.log(this.deviceShow);
             }
           },
-          (error) => {}
+          error => {}
         );
     },
     gotoAddDevice() {
       this.$router.push({
-        name: "AddDevice",
+        name: 'AddDevice'
       });
     },
     toCheck() {
       this.$router.push({
-        name: "CheckDevice",
+        name: 'CheckDevice'
       });
-    },
+    }
   },
   created() {
     axios
-      .get("http://183.201.200.28:9002/equipmanages/pageQuery", {
+      .get('http://183.201.200.28:9002/equipmanages/pageQuery', {
         params: {
           currentPage: this.current,
-          pageSize: 6,
+          pageSize: 6
         },
         headers: {
           token:
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzeXN0ZW0iLCJzaGlyb1VzZXJJbmZvIjoie1wiY29udGFjdFwiOlwi5byg5LiJXCIsXCJjb250YWN0VGVsXCI6XCIxMzU4NjQ1NzUxMlwiLFwiZGF0ZVwiOjE2NTMyOTYxNjEwMDAsXCJkZXBhcnRJZFwiOjEsXCJkZXNjcmlwdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2m55qE6K6-5aSH566h55CG5ZGYXCIsXCJsb2NhdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2mXCIsXCJwYXNzd29yZFwiOlwidHl1dFwiLFwicm9sZUlkXCI6MixcInRocmVzaG9sZFwiOjUsXCJ1aWRcIjpcIjFcIixcInVzZXJuYW1lXCI6XCJ0eXV0XCJ9IiwiaWF0IjoxNjU5MjY3OTA4LCJqdGkiOiJlMzQ5YTZlNi1mZTE0LTQ1M2YtYjI5OS0xMGY2ZWMyNGQyMWUifQ.kewpWpMZXKuUd0658aaUsoA-6hvRl30aGCwfJGXZfPM",
-        },
+            'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzeXN0ZW0iLCJzaGlyb1VzZXJJbmZvIjoie1wiY29udGFjdFwiOlwi5byg5LiJXCIsXCJjb250YWN0VGVsXCI6XCIxMzU4NjQ1NzUxMlwiLFwiZGF0ZVwiOjE2NTMyOTYxNjEwMDAsXCJkZXBhcnRJZFwiOjEsXCJkZXNjcmlwdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2m55qE6K6-5aSH566h55CG5ZGYXCIsXCJsb2NhdGlvblwiOlwi5aSq5Y6f55CG5bel5aSn5a2mXCIsXCJwYXNzd29yZFwiOlwidHl1dFwiLFwicm9sZUlkXCI6MixcInRocmVzaG9sZFwiOjUsXCJ1aWRcIjpcIjFcIixcInVzZXJuYW1lXCI6XCJ0eXV0XCJ9IiwiaWF0IjoxNjU5MjY3OTA4LCJqdGkiOiJlMzQ5YTZlNi1mZTE0LTQ1M2YtYjI5OS0xMGY2ZWMyNGQyMWUifQ.kewpWpMZXKuUd0658aaUsoA-6hvRl30aGCwfJGXZfPM'
+        }
       })
       .then(
-        (response) => {
+        response => {
           if (response.status == 200) {
             console.log(response.data.data);
             this.deviceShow = response.data.data.records;
@@ -366,14 +186,14 @@ export default defineComponent({
             console.log(this.deviceShow);
           }
         },
-        (error) => {}
+        error => {}
       );
-  },
+  }
 });
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/bootstrap.min.css";
+@import '../assets/css/bootstrap.min.css';
 .row {
   display: -ms-flexbox;
   display: flex;
@@ -493,8 +313,5 @@ path {
   height: 30px;
   width: 30px;
   /* right: 50px; */
-}
-.bottom_4 {
-  margin-left: 540px;
 }
 </style>
