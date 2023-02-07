@@ -7,7 +7,9 @@
         <i class="iconfont icon-gouwuche" style="font-size:55px;"></i>
       </div>
       <div class="number">
-        <h3 id="eqCount"><span class="count" id="depCount-number"></span></h3>
+        <h2 id="eqCount"><span class="count" id="depCount-number" style=" color: #fff;
+    font-weight: normal;font-size: 1.75rem;" >5</span></h2>
+
         <p>单位总数</p>
       </div>
     </div>
@@ -16,21 +18,22 @@
         <i class="iconfont icon-shuangren" style="font-size:50px;"></i>
       </div>
       <div class="number">
-        <h3 id="eqCount"><span class="count" id="eqCount-number"></span></h3>
+        <h3 id="eqCount"><span class="count" id="eqCount-number" style=" color: #fff;
+    font-weight: normal;font-size: 1.75rem;" >17</span></h3>
         <p>设备总数</p>
       </div>
     </div>
     <div class="problem">
       <div class="ratio">
-        <span style="    color: #fff;
-    font-weight: normal;font-size: 1.75rem;" class="count" id="fail-Rate"></span>
+        <span style=" color: #fff;
+    font-weight: normal;font-size: 1.75rem;" class="count" id="fail-Rate">0%</span>
         <p style="margin-top:6px;">今日故障比例</p>
       </div>
     </div>
     <div class="warn">
       <div class="ratio">
         <span class="count" id="alarmRate" style="    color: #fff;
-    font-weight: normal;font-size: 1.75rem;"></span>
+    font-weight: normal;font-size: 1.75rem;">0%</span>
         <p style="margin-top:6px;">今日报警比例</p>
       </div>
     </div>
@@ -41,39 +44,35 @@
       <strong>告警信息统计</strong>
     </div>
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="row">当前报警数</th>
-          <td id="alarmTotal"><span>0</span></td>
-          <!--<td id="alarmTotal">{{ data.nowAlarmCount }}</td>-->
-          <td></td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">当前故障数</th>
-          <td id="failTotal"><span>0</span></td>
-          <!--<td>{{ data.nowFaultCount }}</td>-->
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">今日报警数</th>
-          <td id="alarmTody"><span>0</span></td>
-          <!--<td>{{ data.todayAlarmCount }}</td>-->
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">今日故障数</th>
-          <td id="failTody"><span>0</span></td>
-          <!-- <td>{{ data.todayFaultCount }}</td>-->
-          <td></td>
-          <td></td>
-        </tr>
 
-      </tbody>
+      <tr>
+        <th scope="row">当前报警数</th>
+        <td id="alarmTotal"><span>0</span></td>
+        <!--<td id="alarmTotal">{{ data.nowAlarmCount }}</td>-->
+
+      </tr>
+
+
+      <tr>
+        <th scope="row">当前故障数</th>
+        <td id="failTotal"><span>0</span></td>
+        <!--<td>{{ data.nowFaultCount }}</td>-->
+
+      </tr>
+      <tr>
+        <th scope="row">今日报警数</th>
+        <td id="alarmTody"><span>0</span></td>
+        <!--<td>{{ data.todayAlarmCount }}</td>-->
+
+      </tr>
+      <tr>
+        <th scope="row">今日故障数</th>
+        <td id="failTody"><span>0</span></td>
+        <!-- <td>{{ data.todayFaultCount }}</td>-->
+
+      </tr>
+
+
     </table>
   </div>
   <div class="warn-count">
@@ -87,7 +86,7 @@
   <!-- 底部-->
   <div class="footer">Copyright © 2020 易宁监测平台</div>
 </template>
- 
+
 <script lang="ts">
 import axios from 'axios';
 import Chart1 from "./Chart1.vue"
@@ -108,9 +107,9 @@ function gettoken() {
     document.getElementById('fail-Rate')!.innerHTML = response.data.data.failRate + '%'
     console.log(JSON.stringify(response.data.data.failRate))
   })
-    .catch(function (error) {
-      console.log(error);
-    })
+      .catch(function (error) {
+        console.log(error);
+      })
 }
 
 export default ({
@@ -126,7 +125,7 @@ export default ({
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/iconfont/iconfont.css';
+@import '@/assets/iconfont/iconfont.css';
 .site-layout-content {
   min-height: 280px;
   padding: 24px;
@@ -369,5 +368,25 @@ export default ({
 .icon-gouwuche {
   color: rgba(229, 226, 226, 0.6);
   font-size: 55px;
+}
+.table-striped {
+  //  border: 1px black solid;
+  width: 515px;
+  height: 200px;
+}
+
+th{
+  padding-left: 8px;
+  width: 300px;
+  text-align: left;
+}
+td{
+  text-align: left;
+}
+tr{
+  height: 50px;
+}
+tr:nth-child(even){
+  background:rgb(233, 237, 239);
 }
 </style>

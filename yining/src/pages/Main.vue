@@ -1,25 +1,55 @@
 <template>
   <a-layout class="layout">
     <!-- 顶部 -->
-    <a-layout-header style="background: #fff; padding: 0; width: 100%; box-shadow: 3px 0 8px -4px #000">
-      <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
-      <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
-      <img src="../assets/img/yining_logo.png" style="width: 90px; height: 45px; margin-left: 60px; margin-top: -6px" alt="" />
+    <a-layout-header
+        style="
+        background: #fff;
+        padding: 0;
+        width: 100%;
+        box-shadow: 3px 0 8px -4px #000;
+      "
+    >
+      <menu-unfold-outlined
+          v-if="collapsed"
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+      />
+      <menu-fold-outlined
+          v-else
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+      />
+      <img
+          src="../assets/img/yining_logo.png"
+          style="width: 90px; height: 45px; margin-left: 60px; margin-top: -6px"
+          alt=""
+      />
     </a-layout-header>
     <!-- 内容区域 -->
-
-    <!-- 侧边导航 -->
+    <!-- 测边导航 -->
     <a-layout>
-      <a-layout-sider v-model:collapsed="collapsed" style="background: #fff; overflow-y: auto; box-shadow: 3px 0 8px -4px #ccc" :trigger="null" collapsible model="inline">
+      <a-layout-sider
+          v-model:collapsed="collapsed"
+          style="
+          background: #fff;
+          overflow-y: auto;
+          box-shadow: 3px 0 8px -4px #ccc;
+        "
+          :trigger="null"
+          collapsible
+          model="inline"
+      >
         <!-- <div class="logo" /> -->
-        <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
+        <a-menu v-model:selectedKeys="selectedKeys" mode="inline"
+
+        >
           <a-menu-item key="sub1">
-            <!-- <user-outlined /> -->
+            <user-outlined />
             <span style="font-weight: 600">中控界面</span>
           </a-menu-item>
-
           <a-sub-menu key="sub2">
             <template #title>
+              <aim-outlined />
               <span>
                 <span style="font-weight: 600">当前查看</span>
               </span>
@@ -32,9 +62,9 @@
               <span>数据统计</span>
             </a-menu-item>
           </a-sub-menu>
-
           <a-sub-menu key="sub3">
             <template #title>
+              <eye-filled />
               <span>
                 <span style="font-weight: 600">实时监测</span>
               </span>
@@ -48,9 +78,9 @@
               <span>能耗监测</span>
             </a-menu-item>
           </a-sub-menu>
-
           <a-sub-menu key="sub4">
             <template #title>
+              <line-chart-outlined />
               <span>
                 <span style="font-weight: 600">数据中心</span>
               </span>
@@ -72,9 +102,9 @@
               <span>巡查日志</span>
             </a-menu-item>
           </a-sub-menu>
-
           <a-sub-menu key="sub5">
             <template #title>
+              <setting-filled />
               <span>
                 <span style="font-weight: 600">后台管理</span>
               </span>
@@ -94,13 +124,15 @@
           </a-sub-menu>
         </a-menu>
       </a-layout-sider>
-
       <a-layout-content>
         <router-view></router-view>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
+
+
+
 <script lang="ts">
 import {
   UserOutlined,
@@ -121,12 +153,14 @@ import {
   AlertFilled,
   CalendarOutlined,
   SettingFilled,
-  TeamOutlined
-} from '@ant-design/icons-vue';
-import { log } from '@antv/g2plot/lib/utils';
-import { defineComponent, ref } from 'vue';
+  TeamOutlined,
+  AimOutlined
+} from "@ant-design/icons-vue";
+import { log } from "@antv/g2plot/lib/utils";
+import { defineComponent, ref ,reactive, watch} from "vue";
+import { RouterView } from "vue-router";
 export default defineComponent({
-  name: 'Main',
+  name: "Main",
   components: {
     UserOutlined,
     VideoCameraOutlined,
@@ -146,47 +180,49 @@ export default defineComponent({
     AlertFilled,
     CalendarOutlined,
     SettingFilled,
-    TeamOutlined
+    TeamOutlined,
+    AimOutlined
   },
   setup() {
+
     return {
-      selectedKeys: ref<string[]>(['1']),
-      collapsed: ref<boolean>(false)
+      selectedKeys: ref<string[]>(["1"]),
+      collapsed: ref<boolean>(false),
     };
   },
   methods: {
     goMD() {
       this.$router.push({
-        name: 'MDevice'
+        name: "MDevice",
       });
     },
     goDevice() {
-      // console.log(1235);
+      console.log(1235);
       this.$router.push({
-        name: 'Device'
+        name: "Device",
       });
     },
     goDatacoount() {
       this.$router.push({
-        name: 'Datacount'
+        name: "Datacount",
       });
     },
     goSourceuse() {
       this.$router.push({
-        name: 'Sourceuse'
+        name: "Sourceuse",
       });
     },
     goUserSetting() {
       this.$router.push({
-        name: 'UserSetting'
+        name: "UserSetting",
       });
     },
     goAlarmLog() {
       this.$router.push({
-        name: 'AlarmLog'
+        name: "AlarmLog",
       });
-    }
-  }
+    },
+  },
 });
 </script>
 <style lang="scss" scoped>
@@ -195,7 +231,6 @@ export default defineComponent({
   background: white;
   overflow-y: hidden;
 }
-
 .trigger {
   font-size: 22px;
   // line-height: 80px;
@@ -203,27 +238,22 @@ export default defineComponent({
   cursor: pointer;
   transition: color 0.3s;
 }
-
 .layout .trigger:hover {
   color: #1890ff;
 }
-
 .layout .logo {
   height: 32px;
   background: rgba(255, 255, 255, 0.3);
   margin: 16px;
 }
-
 .site-layout .site-layout-background {
   background: #fff;
 }
-
 .ant-layout-content {
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
 .a-layout-header {
   height: 58px;
   line-height: 58px;
